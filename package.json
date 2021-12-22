@@ -1,0 +1,45 @@
+{
+  "private": true,
+  "name": "remix-yomi-template",
+  "description": "A template built for Remix",
+  "license": "",
+  "scripts": {
+    "server:build": "remix build",
+    "server:watch": "remix watch",
+    "server:dev": "remix dev",
+    "postinstall": "remix setup node",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "start:dev": "cross-env NODE_ENV=development node server/index.js",
+    "dev:css": "node-sass --watch --importer node_modules/node-sass-package-importer/dist/cli.js styles/entry/*.scss -o app/styles/compiled/",
+    "build:css": "node-sass --importer node_modules/node-sass-package-importer/dist/cli.js styles/entry/*.scss -o app/styles/compiled/",
+    "dev": "concurrently \"npm run dev:css\" \"npm run server:dev\"",
+    "build": "npm run build:css && npm run server:build"
+  },
+  "dependencies": {
+    "@remix-run/express": "^1.1.1",
+    "@remix-run/react": "^1.1.1",
+    "compression": "^1.7.4",
+    "cross-env": "^7.0.3",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "remix": "^1.1.1"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^1.1.1",
+    "@remix-run/serve": "^1.1.1",
+    "@types/react": "^17.0.24",
+    "@types/react-dom": "^17.0.9",
+    "concurrently": "^6.5.1",
+    "node-sass": "^7.0.0",
+    "node-sass-package-importer": "^5.3.2",
+    "prettier": "^2.5.1",
+    "sass": "^1.45.1",
+    "typescript": "^4.1.2"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "sideEffects": false
+}
