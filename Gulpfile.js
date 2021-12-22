@@ -19,21 +19,24 @@ function buildStyles() {
     .pipe(postcss(plugins))
     .pipe(gulp.dest("./app/styles/compiled"));
 }
-
-
-exports.cleanStylesOutput = cleanStylesOutput;
-exports.buildStyles = buildStyles;
-
-exports.compileStylesForProduction = function compileStylesForProduction() {
+function compileStylesForProduction() {
   cleanStylesOutput();
   buildStyles();
 }
 
-exports.watchAndCompileStyles = function watchAndCompileStyles() {
+function watchAndCompileStyles() {
   cleanStylesOutput();
   buildStyles();
-  watch("./styles/**/*.scss", { queue: false }, function () {
+  watch(["styles/**/*.scss"], function (cb) {
     cleanStylesOutput();
     buildStyles();
+    cb();
   });
+}
+
+module.exports = {
+  cleanStylesOutput,
+  buildStyles,
+  compileStylesForProduction,
+  watchAndCompileStyles,
 };
