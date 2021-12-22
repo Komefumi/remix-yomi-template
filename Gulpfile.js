@@ -32,7 +32,7 @@ exports.compileStylesForProduction = function compileStylesForProduction() {
 exports.watchAndCompileStyles = function watchAndCompileStyles() {
   cleanStylesOutput();
   buildStyles();
-  watch("./styles/entry/*.scss", { queue: false }, function () {
+  watch("./styles/**/*.scss", { queue: false }, function () {
     cleanStylesOutput();
     buildStyles();
   });
