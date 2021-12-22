@@ -28,7 +28,7 @@ function watchAndCompileStyles() {
   cleanStylesOutput();
   buildStyles();
   watch(["styles/**/*.scss"], function (cb) {
-    cleanStylesOutput();
+    // cleanStylesOutput();
     buildStyles();
     cb();
   });
