@@ -10,10 +10,12 @@
     "postinstall": "remix setup node",
     "start": "cross-env NODE_ENV=production node server/index.js",
     "start:dev": "cross-env NODE_ENV=development node server/index.js",
-    "dev:css": "gulp watchAndCompileStyles",
-    "build:css": "gulp compileStylesForProduction",
-    "dev": "concurrently \"npm run dev:css\" \"npm run server:dev\"",
-    "build": "npm run build:css && npm run server:build"
+    "css:dev": "gulp watchAndCompileStyles",
+    "css:build": "gulp compileStylesForProduction",
+    "sass:dev": "sass --watch styles/:app/styles/",
+    "sass:build": "sass styles/:app/styles/",
+    "dev": "concurrently \"npm run sass:dev\" \"npm run server:dev\"",
+    "build": "npm run sass:build && npm run server:build"
   },
   "dependencies": {
     "@remix-run/express": "^1.1.1",
